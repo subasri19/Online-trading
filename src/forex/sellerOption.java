@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package forex;
 
 /**
  *
- * @author USER
+ * @author Subasri
  */
 public class sellerOption extends javax.swing.JFrame {
 
     /**
-     * Creates new form sellerOption
+     * Creates new form sellerOption displaying the various options for the seller
      */
     public sellerOption() {
         initComponents();
@@ -38,6 +34,11 @@ public class sellerOption extends javax.swing.JFrame {
 
         addItems.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         addItems.setText("ADD ITEMS");
+        addItems.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addItemsActionPerformed(evt);
+            }
+        });
         getContentPane().add(addItems);
         addItems.setBounds(417, 89, 260, 56);
 
@@ -82,6 +83,11 @@ public class sellerOption extends javax.swing.JFrame {
         new Logout().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_logoutActionPerformed
+
+    private void addItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemsActionPerformed
+        new SAddItems().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addItemsActionPerformed
 
     /**
      * @param args the command line arguments

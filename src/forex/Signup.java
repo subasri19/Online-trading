@@ -225,16 +225,15 @@ public class Signup extends javax.swing.JFrame {
         else{
               
             boolean flag = false;
-            char[] PW = pw.getPassword();
-            char[] PW1 = pw1.getPassword();
+            String PW = pw.getText();
+            String PW1 = pw1.getText();
             
-            for(int i = 0; i<pw.getPassword().length; i++){
-                if(PW[i]==PW1[i])
-                    continue;
-                flag = true;
+            if(!PW.equals(PW1)){
+                JOptionPane.showMessageDialog(null, "Passwords not matching"); 
+                flag=true;
             }
-            
-            if(flag == true){
+                                
+            if(flag == false){
                 
                 String Name, UName, Pw, Pw1, Phno, Mail;
                 char role = 'b';
@@ -244,6 +243,21 @@ public class Signup extends javax.swing.JFrame {
                 Phno = phno.getText();
                 Mail = mail.getText();
                 
+                if(!Mail.matches("^[a-zA-Z0-9_+&*-]+(?:\\."+ "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$")){
+                      JOptionPane.showMessageDialog(null, "Invalid mail Id");
+                      return;
+                }
+                
+                if(!Phno.matches("^[0-9]{10}$")){
+                    JOptionPane.showMessageDialog(null,"Enter a valid phone number","Warning Box",1);
+                    return;
+                }
+                
+                if(!PW.matches("(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}")){
+                    JOptionPane.showMessageDialog(null, "Password must contain a special character and it is alphanumerical");
+                    return;
+                }
+                        
                 if(buyer.isSelected()){
                     role = 'b';
                     new sellerOption().setVisible(true);
@@ -260,7 +274,7 @@ public class Signup extends javax.swing.JFrame {
                     Connection con = (Connection)
                     DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
                     Statement stmt = (Statement) con.createStatement();
-                    String query = "insert into accountDetails values('"+Name+"','"+UName+"','"+Mail+"','"+Phno+"','"+pw.getPassword()+"','"+pw1.getPassword()+"','"+role+"');";
+                    String query = "insert into accountDetails values('"+Name+"','"+UName+"','"+Mail+"','"+Phno+"','"+PW+"','"+role+"');";
                     stmt.execute(query);
                  }
                 catch(Exception e){
@@ -268,10 +282,6 @@ public class Signup extends javax.swing.JFrame {
                 }
             JOptionPane.showMessageDialog(null, "You have been successfully registred in the site","Confirmation Box",1);   
         
-          }
-            
-          else{
-              JOptionPane.showMessageDialog(null, "Your passwords doesn't match","Warning Box",1);
           }
         }
             

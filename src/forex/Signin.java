@@ -3,16 +3,17 @@ package forex;
 import java.sql.DriverManager;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author USER
+ * @author Subasri
  */
 public class Signin extends javax.swing.JFrame {
 
     /**
-     * Creates new form for Signin
+     * Creates new form for sign-in in to the software and gain access
      */
     public Signin() {
         initComponents();
@@ -40,7 +41,6 @@ public class Signin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 0));
-        setMaximumSize(new java.awt.Dimension(1000, 1000));
         setMinimumSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(null);
 
@@ -116,7 +116,7 @@ public class Signin extends javax.swing.JFrame {
 
     private void proceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proceedActionPerformed
         String UName = uname.getText();
-        char[] PW = pw.getPassword();
+        String PW = pw.getText();
         
         try{
             ResultSet rs;   
@@ -124,23 +124,23 @@ public class Signin extends javax.swing.JFrame {
             Connection con = (Connection)
             DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
             Statement stmt = (Statement) con.createStatement();
-            String query = "select count(*) from accountDetails where uname='"+UName+"' and pw='"+PW+"';";
+            String query = "select * from accountDetails where userName='"+UName+"' and pw='"+PW+"';";
             rs = stmt.executeQuery(query);
             if(rs.next()){
-                int count = rs.getInt(1);
-                if(count>=1){
+                
                     JOptionPane.showMessageDialog(null,"Succeffully logged in","Login Success",1);
-                    if(rs.getString("role") == 'b')
+                    if(rs.getString("role").equals("b"))
                         new sellerOption().setVisible(true);
                     else
                         new SAddItems().setVisible(true);
+                     this.setVisible(false);
                 }
                 else
-                    JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error",1);
-                this.setVisible(false);
+                    JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error message",1);
+               
             }
             
-         }
+         
         catch(Exception e){
             JOptionPane.showMessageDialog(this,e.getMessage());
         }

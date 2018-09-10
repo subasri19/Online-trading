@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package forex;
 
 /**
  *
- * @author USER
+ * @author Subasri
  */
 public class SAddItems extends javax.swing.JFrame {
 
     /**
-     * Creates new form SAddItems
+     * Creates new form SAddItems for adding new to the display in the buyers page
      */
     public SAddItems() {
         initComponents();
