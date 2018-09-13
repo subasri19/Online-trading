@@ -1,5 +1,10 @@
 package forex;
 
+import java.sql.DriverManager;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Subasri
@@ -9,8 +14,16 @@ public class SAddItems extends javax.swing.JFrame {
     /**
      * Creates new form SAddItems for adding new to the display in the buyers page
      */
+    
+    public String uname;
+    
     public SAddItems() {
         initComponents();
+    }
+
+    SAddItems(String UName) {
+        this.uname = UName;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -22,134 +35,181 @@ public class SAddItems extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lTitle = new javax.swing.JLabel();
+        lItemName = new javax.swing.JLabel();
+        lItemDesc = new javax.swing.JLabel();
+        lItemCategory = new javax.swing.JLabel();
+        lItemCost = new javax.swing.JLabel();
+        BaddItems = new javax.swing.JButton();
+        itemName = new javax.swing.JTextField();
+        itemCost = new javax.swing.JTextField();
+        ItemDesc = new javax.swing.JScrollPane();
+        itemDesc = new javax.swing.JTextArea();
+        Bdisplay = new javax.swing.JButton();
+        Bview = new javax.swing.JButton();
+        Blogout = new javax.swing.JButton();
+        categoryList = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
-        jLabel1.setText("ADD ITEMS FOR DISPLAY");
+        lTitle.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        lTitle.setText("ADD ITEMS FOR DISPLAY");
+        getContentPane().add(lTitle);
+        lTitle.setBounds(356, 36, 320, 34);
+
+        lItemName.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        lItemName.setText("Item name");
+        getContentPane().add(lItemName);
+        lItemName.setBounds(130, 92, 265, 46);
+
+        lItemDesc.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        lItemDesc.setText("Item description");
+        getContentPane().add(lItemDesc);
+        lItemDesc.setBounds(130, 183, 265, 34);
+
+        lItemCategory.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        lItemCategory.setText("Item category");
+        getContentPane().add(lItemCategory);
+        lItemCategory.setBounds(130, 312, 265, 34);
+
+        lItemCost.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        lItemCost.setText("Cost");
+        getContentPane().add(lItemCost);
+        lItemCost.setBounds(130, 390, 265, 34);
+
+        BaddItems.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        BaddItems.setText("ADD  ITEM TO THE LIST");
+        BaddItems.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BaddItemsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BaddItems);
+        BaddItems.setBounds(327, 458, 381, 58);
+
+        itemName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemNameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(itemName);
+        itemName.setBounds(469, 96, 183, 46);
+
+        itemCost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCostActionPerformed(evt);
+            }
+        });
+        getContentPane().add(itemCost);
+        itemCost.setBounds(469, 390, 198, 34);
+
+        itemDesc.setColumns(20);
+        itemDesc.setRows(5);
+        ItemDesc.setViewportView(itemDesc);
+
+        getContentPane().add(ItemDesc);
+        ItemDesc.setBounds(469, 170, 489, 133);
+
+        Bdisplay.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        Bdisplay.setText("DISPLAY ITEMS");
+        Bdisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BdisplayActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Bdisplay);
+        Bdisplay.setBounds(100, 550, 270, 65);
+
+        Bview.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        Bview.setText("VIEW ACCOUNT");
+        Bview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BviewActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Bview);
+        Bview.setBounds(410, 550, 280, 65);
+
+        Blogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        Blogout.setText("LOG OUT");
+        Blogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlogoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Blogout);
+        Blogout.setBounds(720, 550, 210, 65);
+
+        categoryList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--ANY--", "Electronics", "Accessories", "Books", "MIsccellaneous" }));
+        categoryList.setOpaque(false);
+        categoryList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryListActionPerformed(evt);
+            }
+        });
+        getContentPane().add(categoryList);
+        categoryList.setBounds(470, 320, 170, 50);
+
+        jLabel1.setBackground(new java.awt.Color(255, 153, 255));
+        jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(356, 36, 320, 34);
-
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
-        jLabel2.setText("Item name");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(130, 92, 265, 46);
-
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
-        jLabel3.setText("Item description");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(130, 183, 265, 34);
-
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
-        jLabel4.setText("Item category");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(130, 312, 265, 34);
-
-        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
-        jLabel5.setText("Cost");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(130, 390, 265, 34);
-
-        jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jButton1.setText("ADD  ITEM TO THE LIST");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(327, 458, 381, 58);
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(469, 96, 183, 46);
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(469, 390, 198, 34);
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(469, 170, 489, 133);
-
-        jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jButton2.setText("DISPLAY ITEMS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(100, 550, 270, 65);
-
-        jButton3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jButton3.setText("VIEW ACCOUNT");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(410, 550, 280, 65);
-
-        jButton4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jButton4.setText("LOG OUT");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(720, 550, 210, 65);
-
-        jLabel6.setBackground(new java.awt.Color(255, 153, 255));
-        jLabel6.setOpaque(true);
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(1, 0, 1030, 640);
+        jLabel1.setBounds(1, 0, 1020, 640);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BaddItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaddItemsActionPerformed
+       if(itemName.getText().equals("") || itemCost.getText().equals("") || itemDesc.getText().equals(""))
+           JOptionPane.showMessageDialog(null, "Ensure if all the columns ar filled", "Warning message",1);
+       else{
+           String name = itemName.getText();
+           String desc = itemDesc.getText();
+           String cost = itemCost.getText();
+           String category = categoryList.getName();
+           
+           try{
+                    Class.forName("java.sql.DriverManager");
+                    Connection con = (Connection)
+                    DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
+                    Statement stmt = (Statement) con.createStatement();
+                    String query = "insert into itemDetails values('"+name+"','"+desc+"','"+cost+"','"+category+"');";
+                    stmt.execute(query);
+                 }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(this,e.getMessage());
+                }
+           JOptionPane.showMessageDialog(null, "Item details have been successfully entered");
+       }
+    }//GEN-LAST:event_BaddItemsActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void itemCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCostActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_itemCostActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void itemNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_itemNameActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void BlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlogoutActionPerformed
+        this.dispose();
+        new Logout().setVisible(true);
+    }//GEN-LAST:event_BlogoutActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BdisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BdisplayActionPerformed
+       this.dispose();
+       new BDisplayPage(uname).setVisible(true);
+    }//GEN-LAST:event_BdisplayActionPerformed
+
+    private void categoryListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryListActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_categoryListActionPerformed
+
+    private void BviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BviewActionPerformed
+        this.dispose();
+        new ViewAccount(uname).setVisible(true);
+    }//GEN-LAST:event_BviewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,19 +247,20 @@ public class SAddItems extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton BaddItems;
+    private javax.swing.JButton Bdisplay;
+    private javax.swing.JButton Blogout;
+    private javax.swing.JButton Bview;
+    private javax.swing.JScrollPane ItemDesc;
+    private javax.swing.JComboBox<String> categoryList;
+    private javax.swing.JTextField itemCost;
+    private javax.swing.JTextArea itemDesc;
+    private javax.swing.JTextField itemName;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lItemCategory;
+    private javax.swing.JLabel lItemCost;
+    private javax.swing.JLabel lItemDesc;
+    private javax.swing.JLabel lItemName;
+    private javax.swing.JLabel lTitle;
     // End of variables declaration//GEN-END:variables
 }

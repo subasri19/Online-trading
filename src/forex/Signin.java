@@ -130,13 +130,13 @@ public class Signin extends javax.swing.JFrame {
                 
                     JOptionPane.showMessageDialog(null,"Succeffully logged in","Login Success",1);
                     if(rs.getString("role").equals("b"))
-                        new sellerOption().setVisible(true);
+                        new sellerOption(UName).setVisible(true);
                     else
-                        new SAddItems().setVisible(true);
+                        new BDisplayPage(UName).setVisible(true);
                      this.setVisible(false);
                 }
-                else
-                    JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error message",1);
+            else
+                JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error message",1);
                
             }
             

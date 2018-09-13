@@ -10,8 +10,14 @@ public class sellerOption extends javax.swing.JFrame {
     /**
      * Creates new form sellerOption displaying the various options for the seller
      */
-    public sellerOption() {
+    
+
+    public String uname;
+    
+    sellerOption(String UName) {
+        this.uname = UName;
         initComponents();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -54,6 +60,11 @@ public class sellerOption extends javax.swing.JFrame {
 
         viewAcc.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         viewAcc.setText("VIEW ACCOUNT");
+        viewAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAccActionPerformed(evt);
+            }
+        });
         getContentPane().add(viewAcc);
         viewAcc.setBounds(417, 311, 260, 57);
 
@@ -85,9 +96,14 @@ public class sellerOption extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void addItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemsActionPerformed
-        new SAddItems().setVisible(true);
+        new SAddItems(uname).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_addItemsActionPerformed
+
+    private void viewAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAccActionPerformed
+        new ViewAccount(uname).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_viewAccActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,7 +135,7 @@ public class sellerOption extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sellerOption().setVisible(true);
+                new sellerOption(UName).setVisible(true);
             }
         });
     }
