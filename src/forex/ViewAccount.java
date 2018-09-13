@@ -15,6 +15,10 @@ public class ViewAccount extends javax.swing.JFrame {
      * Creates new form ViewAccount of the user
      */
 
+    public ViewAccount(){
+        initComponents();
+    }
+    
     public String UName; 
     
     ViewAccount(String UName) {
@@ -40,7 +44,7 @@ public class ViewAccount extends javax.swing.JFrame {
         Lphno = new javax.swing.JLabel();
         Lrole = new javax.swing.JLabel();
         Drole = new javax.swing.JLabel();
-        display = new javax.swing.JButton();
+        goBack = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         Dname = new javax.swing.JTextField();
@@ -90,10 +94,15 @@ public class ViewAccount extends javax.swing.JFrame {
         getContentPane().add(Drole);
         Drole.setBounds(493, 476, 323, 42);
 
-        display.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
-        display.setText("DISPLAY ITEMS");
-        getContentPane().add(display);
-        display.setBounds(100, 550, 231, 43);
+        goBack.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        goBack.setText("GO BACK");
+        goBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(goBack);
+        goBack.setBounds(100, 550, 141, 43);
 
         delete.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         delete.setText("DELETE ACCOUNT");
@@ -270,7 +279,19 @@ public class ViewAccount extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
+        this.setVisible(false);
     }//GEN-LAST:event_updateActionPerformed
+
+    private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed
+       if(Drole.getText().equalsIgnoreCase("buyer")){
+           this.dispose();
+           new BOptionPage().setVisible(true);
+       }
+       else{
+           this.dispose();
+           new sellerOption().setVisible(true);
+       }
+    }//GEN-LAST:event_goBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,7 +323,7 @@ public class ViewAccount extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                new ViewAccount().setVisible(true);
             }
         });
     }
@@ -321,7 +342,7 @@ public class ViewAccount extends javax.swing.JFrame {
     private javax.swing.JLabel Lrole;
     private javax.swing.JLabel Luname;
     private javax.swing.JButton delete;
-    private javax.swing.JButton display;
+    private javax.swing.JButton goBack;
     private javax.swing.JButton logout;
     private javax.swing.JButton modify;
     private javax.swing.JButton update;

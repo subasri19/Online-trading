@@ -45,7 +45,6 @@ public class SAddItems extends javax.swing.JFrame {
         itemCost = new javax.swing.JTextField();
         ItemDesc = new javax.swing.JScrollPane();
         itemDesc = new javax.swing.JTextArea();
-        Bdisplay = new javax.swing.JButton();
         Bview = new javax.swing.JButton();
         Blogout = new javax.swing.JButton();
         categoryList = new javax.swing.JComboBox<>();
@@ -80,14 +79,14 @@ public class SAddItems extends javax.swing.JFrame {
         lItemCost.setBounds(130, 390, 265, 34);
 
         BaddItems.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        BaddItems.setText("ADD  ITEM TO THE LIST");
+        BaddItems.setText("ADD  ITEM TO THE LIST FOR SALE");
         BaddItems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BaddItemsActionPerformed(evt);
             }
         });
         getContentPane().add(BaddItems);
-        BaddItems.setBounds(327, 458, 381, 58);
+        BaddItems.setBounds(240, 460, 510, 58);
 
         itemName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,16 +111,6 @@ public class SAddItems extends javax.swing.JFrame {
         getContentPane().add(ItemDesc);
         ItemDesc.setBounds(469, 170, 489, 133);
 
-        Bdisplay.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        Bdisplay.setText("DISPLAY ITEMS");
-        Bdisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BdisplayActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Bdisplay);
-        Bdisplay.setBounds(100, 550, 270, 65);
-
         Bview.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         Bview.setText("VIEW ACCOUNT");
         Bview.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +119,7 @@ public class SAddItems extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Bview);
-        Bview.setBounds(410, 550, 280, 65);
+        Bview.setBounds(180, 540, 280, 65);
 
         Blogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         Blogout.setText("LOG OUT");
@@ -140,7 +129,7 @@ public class SAddItems extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Blogout);
-        Blogout.setBounds(720, 550, 210, 65);
+        Blogout.setBounds(610, 540, 210, 65);
 
         categoryList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--ANY--", "Electronics", "Accessories", "Books", "MIsccellaneous" }));
         categoryList.setOpaque(false);
@@ -197,11 +186,6 @@ public class SAddItems extends javax.swing.JFrame {
         new Logout().setVisible(true);
     }//GEN-LAST:event_BlogoutActionPerformed
 
-    private void BdisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BdisplayActionPerformed
-       this.dispose();
-       new BDisplayPage(uname).setVisible(true);
-    }//GEN-LAST:event_BdisplayActionPerformed
-
     private void categoryListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryListActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_categoryListActionPerformed
@@ -248,7 +232,6 @@ public class SAddItems extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BaddItems;
-    private javax.swing.JButton Bdisplay;
     private javax.swing.JButton Blogout;
     private javax.swing.JButton Bview;
     private javax.swing.JScrollPane ItemDesc;

@@ -132,7 +132,7 @@ public class Signin extends javax.swing.JFrame {
                     if(rs.getString("role").equals("b"))
                         new sellerOption(UName).setVisible(true);
                     else
-                        new BDisplayPage(UName).setVisible(true);
+                        new BOptionPage(UName).setVisible(true);
                      this.setVisible(false);
                 }
             else
