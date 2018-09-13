@@ -1,4 +1,3 @@
-
 package forex;
 
 /**
@@ -10,14 +9,16 @@ public class sellerOption extends javax.swing.JFrame {
     /**
      * Creates new form sellerOption displaying the various options for the seller
      */
-    
+     
+    public sellerOption(){
+        initComponents();
+    }
 
     public String uname;
     
     sellerOption(String UName) {
         this.uname = UName;
         initComponents();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -30,7 +31,6 @@ public class sellerOption extends javax.swing.JFrame {
     private void initComponents() {
 
         addItems = new javax.swing.JButton();
-        display = new javax.swing.JButton();
         viewAcc = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -46,17 +46,7 @@ public class sellerOption extends javax.swing.JFrame {
             }
         });
         getContentPane().add(addItems);
-        addItems.setBounds(417, 89, 260, 56);
-
-        display.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
-        display.setText("DISPLAY ITEMS");
-        display.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                displayActionPerformed(evt);
-            }
-        });
-        getContentPane().add(display);
-        display.setBounds(419, 196, 258, 65);
+        addItems.setBounds(360, 100, 260, 56);
 
         viewAcc.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         viewAcc.setText("VIEW ACCOUNT");
@@ -66,7 +56,7 @@ public class sellerOption extends javax.swing.JFrame {
             }
         });
         getContentPane().add(viewAcc);
-        viewAcc.setBounds(417, 311, 260, 57);
+        viewAcc.setBounds(360, 230, 260, 57);
 
         logout.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         logout.setText("LOG OUT");
@@ -76,7 +66,7 @@ public class sellerOption extends javax.swing.JFrame {
             }
         });
         getContentPane().add(logout);
-        logout.setBounds(417, 430, 260, 56);
+        logout.setBounds(360, 370, 260, 56);
 
         jLabel1.setBackground(new java.awt.Color(255, 153, 255));
         jLabel1.setOpaque(true);
@@ -85,10 +75,6 @@ public class sellerOption extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void displayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_displayActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         new Logout().setVisible(true);
@@ -135,14 +121,13 @@ public class sellerOption extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sellerOption(UName).setVisible(true);
+                new sellerOption().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addItems;
-    private javax.swing.JButton display;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logout;
     private javax.swing.JButton viewAcc;
