@@ -5,6 +5,12 @@
  */
 package forex;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Subasri
@@ -22,6 +28,7 @@ public class ItemsInCart extends javax.swing.JFrame {
     
     ItemsInCart(String UName) {
        initComponents();
+       display();
        this.uname = UName;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -35,21 +42,283 @@ public class ItemsInCart extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ltitle = new javax.swing.JLabel();
+        litemcategory = new javax.swing.JLabel();
+        litemCost = new javax.swing.JLabel();
+        litemName = new javax.swing.JLabel();
+        litemDesc = new javax.swing.JLabel();
+        itemCategory = new javax.swing.JTextField();
+        itemCost = new javax.swing.JTextField();
+        itemName = new javax.swing.JTextField();
+        itemDesc = new javax.swing.JScrollPane();
+        aitemDesc = new javax.swing.JTextArea();
+        previousRecord = new javax.swing.JButton();
+        deleteItem = new javax.swing.JButton();
+        proceed = new javax.swing.JButton();
+        goBack = new javax.swing.JButton();
+        nextRecord = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        ltitle.setFont(new java.awt.Font("Comic Sans MS", 2, 36)); // NOI18N
+        ltitle.setText("YOUR CART");
+
+        litemcategory.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        litemcategory.setText("Category");
+
+        litemCost.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        litemCost.setText("Cost");
+
+        litemName.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        litemName.setText("Item name");
+
+        litemDesc.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        litemDesc.setText("Item description");
+
+        itemCategory.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+
+        itemCost.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        itemCost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCostActionPerformed(evt);
+            }
+        });
+
+        itemName.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+
+        aitemDesc.setColumns(20);
+        aitemDesc.setRows(5);
+        itemDesc.setViewportView(aitemDesc);
+
+        previousRecord.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        previousRecord.setText("MOVE TO PREVIOUS RECORD");
+        previousRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousRecordActionPerformed(evt);
+            }
+        });
+
+        deleteItem.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        deleteItem.setText("DELETE ITEM FROM CART");
+        deleteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteItemActionPerformed(evt);
+            }
+        });
+
+        proceed.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        proceed.setText("PROCEED TO PAYMENT");
+        proceed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proceedActionPerformed(evt);
+            }
+        });
+
+        goBack.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        goBack.setText("GO BACK");
+        goBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackActionPerformed(evt);
+            }
+        });
+
+        nextRecord.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        nextRecord.setText("MOVE TO NEXT RECORD");
+        nextRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextRecordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(litemDesc)
+                    .addComponent(litemName)
+                    .addComponent(litemcategory)
+                    .addComponent(litemCost))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(ltitle)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemCost, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itemDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itemCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(184, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(nextRecord)
+                        .addGap(28, 28, 28)
+                        .addComponent(previousRecord)
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(proceed, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteItem))
+                        .addGap(317, 317, 317))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(goBack)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(ltitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(litemName))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(litemDesc))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(itemDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(litemcategory))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(litemCost)
+                    .addComponent(itemCost, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(previousRecord)
+                    .addComponent(nextRecord))
+                .addGap(18, 18, 18)
+                .addComponent(deleteItem)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(goBack)
+                    .addComponent(proceed))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+ public void display(){
+        try{
+            ResultSet rs;
+            Class.forName("java.sql.DriverManager");
+            Connection con = (Connection)
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
+            Statement stmt = (Statement) con.createStatement();
+            String query = "select * from itemDetails;";
+            rs = stmt.executeQuery(query);
+            
+            if(rs.next()){
+                 rs.first();
+                itemName.setText(rs.getString("name"));
+                aitemDesc.setText(rs.getString("descr"));
+                itemCategory.setText(rs.getString("category"));
+                itemCost.setText(rs.getString("cost"));
+            } else {
+                JOptionPane.showMessageDialog(null,"You have nothing in your cart");
+            }         
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }  
+    }
+
+    private void itemCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemCostActionPerformed
+
+    private void proceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proceedActionPerformed
+        this.dispose();
+        new Payment(uname).setVisible(true);
+    }//GEN-LAST:event_proceedActionPerformed
+
+    private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed
+        this.dispose();
+        new BItemDisplayPage(uname).setVisible(true);
+    }//GEN-LAST:event_goBackActionPerformed
+
+    private void nextRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRecordActionPerformed
+        try{
+            ResultSet rs;
+            Class.forName("java.sql.DriverManager");
+            Connection con = (Connection)
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
+            Statement stmt = (Statement) con.createStatement();
+            String query = "select * from itemDetails;";
+            rs = stmt.executeQuery(query);
+            
+            while(!rs.isLast()){
+                rs.next();
+                itemName.setText(rs.getString("name"));
+                aitemDesc.setText(rs.getString("descr"));
+                itemCategory.setText(rs.getString("category"));
+                itemCost.setText(rs.getString("cost"));
+            }
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }  
+
+    }//GEN-LAST:event_nextRecordActionPerformed
+
+    private void previousRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousRecordActionPerformed
+         try{
+            ResultSet rs;
+            Class.forName("java.sql.DriverManager");
+            Connection con = (Connection)
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
+            Statement stmt = (Statement) con.createStatement();
+            String query = "select * from itemDetails;";
+            rs = stmt.executeQuery(query);
+            
+            while(!rs.isFirst() && !rs.isLast()){
+                rs.previous();
+                itemName.setText(rs.getString("name"));
+                aitemDesc.setText(rs.getString("descr"));
+                itemCategory.setText(rs.getString("category"));
+                itemCost.setText(rs.getString("cost"));
+            }
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }  
+    }//GEN-LAST:event_previousRecordActionPerformed
+
+    private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteItemActionPerformed
+       try{
+            ResultSet rs;
+            Class.forName("java.sql.DriverManager");
+            Connection con = (Connection)
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
+            Statement stmt = (Statement) con.createStatement();
+            String query = "delete from itemDetails where uname = '" +uname+"' and name = '" +itemName.getText()+"';";
+            stmt.executeUpdate(query);
+       }
+       catch(Exception e){
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+       JOptionPane.showMessageDialog(null, "Item deleted from your cart");
+    }//GEN-LAST:event_deleteItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +356,20 @@ public class ItemsInCart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea aitemDesc;
+    private javax.swing.JButton deleteItem;
+    private javax.swing.JButton goBack;
+    private javax.swing.JTextField itemCategory;
+    private javax.swing.JTextField itemCost;
+    private javax.swing.JScrollPane itemDesc;
+    private javax.swing.JTextField itemName;
+    private javax.swing.JLabel litemCost;
+    private javax.swing.JLabel litemDesc;
+    private javax.swing.JLabel litemName;
+    private javax.swing.JLabel litemcategory;
+    private javax.swing.JLabel ltitle;
+    private javax.swing.JButton nextRecord;
+    private javax.swing.JButton previousRecord;
+    private javax.swing.JButton proceed;
     // End of variables declaration//GEN-END:variables
 }

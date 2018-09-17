@@ -5,6 +5,12 @@
  */
 package forex;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Subasri
@@ -18,6 +24,12 @@ public class Payment extends javax.swing.JFrame {
         initComponents();
     }
 
+    public String uname;
+    
+    Payment(String UName) {
+        this.uname = UName;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +39,170 @@ public class Payment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        totalAmt = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        Tccv = new javax.swing.JTextField();
+        payAmt = new javax.swing.JButton();
+        cardNo = new javax.swing.JLabel();
+        cardHolder = new javax.swing.JLabel();
+        ccv = new javax.swing.JLabel();
+        TamtPaid = new javax.swing.JTextField();
+        TcardNo = new javax.swing.JTextField();
+        TcardHolder = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        totalAmt.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        totalAmt.setText("Total amount to be paid");
+
+        title.setFont(new java.awt.Font("Segoe Print", 3, 36)); // NOI18N
+        title.setText("PAYMENT PAGE");
+
+        Tccv.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        Tccv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TccvActionPerformed(evt);
+            }
+        });
+
+        payAmt.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        payAmt.setText("PAY THE AMOUNT");
+        payAmt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payAmtActionPerformed(evt);
+            }
+        });
+
+        cardNo.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        cardNo.setText("Enter your credit/debit card number");
+
+        cardHolder.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        cardHolder.setText("Card holder name");
+
+        ccv.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        ccv.setText("CCV");
+
+        TamtPaid.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        TamtPaid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TamtPaidActionPerformed(evt);
+            }
+        });
+
+        TcardNo.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        TcardNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TcardNoActionPerformed(evt);
+            }
+        });
+
+        TcardHolder.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        TcardHolder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TcardHolderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totalAmt, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardNo)
+                    .addComponent(cardHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ccv, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(96, 96, 96)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Tccv, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TcardHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TcardNo, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TamtPaid, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(172, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(payAmt)
+                .addGap(395, 395, 395))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(401, Short.MAX_VALUE)
+                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(332, 332, 332)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(totalAmt)
+                    .addComponent(TamtPaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cardNo)
+                    .addComponent(TcardNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(cardHolder))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(TcardHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(ccv))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Tccv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68)
+                .addComponent(payAmt)
+                .addContainerGap(147, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(60, 60, 60)
+                    .addComponent(title)
+                    .addContainerGap(541, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TccvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TccvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TccvActionPerformed
+
+    private void payAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payAmtActionPerformed
+        JOptionPane.showMessageDialog(null,"The product will be delivered to you shortly! Thank you for using our service");
+        this.dispose();
+        new BItemDisplayPage(uname).setVisible(true);
+        try{
+            ResultSet rs;
+            Class.forName("java.sql.DriverManager");
+            Connection con = (Connection)
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
+            Statement stmt = (Statement) con.createStatement();
+            String query = "delete from itemDetails where uname = '" +uname+"';";
+            stmt.executeUpdate(query);
+       }
+       catch(Exception e){
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+       JOptionPane.showMessageDialog(null, "Item deleted from your cart");
+    }//GEN-LAST:event_payAmtActionPerformed
+
+    private void TamtPaidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TamtPaidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TamtPaidActionPerformed
+
+    private void TcardNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TcardNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TcardNoActionPerformed
+
+    private void TcardHolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TcardHolderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TcardHolderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +240,15 @@ public class Payment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TamtPaid;
+    private javax.swing.JTextField TcardHolder;
+    private javax.swing.JTextField TcardNo;
+    private javax.swing.JTextField Tccv;
+    private javax.swing.JLabel cardHolder;
+    private javax.swing.JLabel cardNo;
+    private javax.swing.JLabel ccv;
+    private javax.swing.JButton payAmt;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel totalAmt;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,7 +23,7 @@ public class SAddItems extends javax.swing.JFrame {
 
     SAddItems(String UName) {
         this.uname = UName;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
     }
 
     /**
@@ -88,6 +88,7 @@ public class SAddItems extends javax.swing.JFrame {
         getContentPane().add(BaddItems);
         BaddItems.setBounds(240, 460, 510, 58);
 
+        itemName.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         itemName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemNameActionPerformed(evt);
@@ -96,6 +97,7 @@ public class SAddItems extends javax.swing.JFrame {
         getContentPane().add(itemName);
         itemName.setBounds(469, 96, 183, 46);
 
+        itemCost.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         itemCost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemCostActionPerformed(evt);
@@ -105,6 +107,7 @@ public class SAddItems extends javax.swing.JFrame {
         itemCost.setBounds(469, 390, 198, 34);
 
         itemDesc.setColumns(20);
+        itemDesc.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         itemDesc.setRows(5);
         ItemDesc.setViewportView(itemDesc);
 
@@ -131,6 +134,7 @@ public class SAddItems extends javax.swing.JFrame {
         getContentPane().add(Blogout);
         Blogout.setBounds(610, 540, 210, 65);
 
+        categoryList.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         categoryList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--ANY--", "Electronics", "Accessories", "Books", "MIsccellaneous" }));
         categoryList.setOpaque(false);
         categoryList.addActionListener(new java.awt.event.ActionListener() {

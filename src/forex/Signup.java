@@ -260,12 +260,12 @@ public class Signup extends javax.swing.JFrame {
                         
                 if(buyer.isSelected()){
                     role = 'b';
-                    new sellerOption(UName).setVisible(true);
+                    new BOptionPage(UName).setVisible(true);
                     this.setVisible(false);
                 }
                 if(seller.isSelected()){
                     role = 's';
-                    new BOptionPage(UName).setVisible(true);
+                    new sellerOption(UName).setVisible(true);
                     this.setVisible(false);
                 }
             

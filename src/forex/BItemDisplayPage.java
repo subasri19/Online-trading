@@ -276,7 +276,7 @@ public class BItemDisplayPage extends javax.swing.JFrame {
     }//GEN-LAST:event_addToCartActionPerformed
 
     private void nextRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRecordActionPerformed
-                try{
+        try{
             ResultSet rs;
             Class.forName("java.sql.DriverManager");
             Connection con = (Connection)

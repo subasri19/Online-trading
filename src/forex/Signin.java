@@ -129,7 +129,7 @@ public class Signin extends javax.swing.JFrame {
             if(rs.next()){
                 
                     JOptionPane.showMessageDialog(null,"Succeffully logged in","Login Success",1);
-                    if(rs.getString("role").equals("b"))
+                    if(rs.getString("role").equals("s"))
                         new sellerOption(UName).setVisible(true);
                     else
                         new BOptionPage(UName).setVisible(true);
