@@ -5,12 +5,15 @@
  */
 package forex;
 
+<<<<<<< HEAD
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
+=======
+>>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
 /**
  *
  * @author Subasri
@@ -28,7 +31,10 @@ public class ItemsInCart extends javax.swing.JFrame {
     
     ItemsInCart(String UName) {
        initComponents();
+<<<<<<< HEAD
        display();
+=======
+>>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
        this.uname = UName;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -42,6 +48,7 @@ public class ItemsInCart extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         ltitle = new javax.swing.JLabel();
         litemcategory = new javax.swing.JLabel();
         litemCost = new javax.swing.JLabel();
@@ -130,10 +137,15 @@ public class ItemsInCart extends javax.swing.JFrame {
             }
         });
 
+=======
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+>>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(layout.createSequentialGroup()
                 .addGap(149, 149, 149)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,11 +222,19 @@ public class ItemsInCart extends javax.swing.JFrame {
                     .addComponent(goBack)
                     .addComponent(proceed))
                 .addContainerGap(51, Short.MAX_VALUE))
+=======
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+>>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
  public void display(){
         try{
             ResultSet rs;
@@ -320,6 +340,8 @@ public class ItemsInCart extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null, "Item deleted from your cart");
     }//GEN-LAST:event_deleteItemActionPerformed
 
+=======
+>>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
     /**
      * @param args the command line arguments
      */
@@ -356,6 +378,7 @@ public class ItemsInCart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JTextArea aitemDesc;
     private javax.swing.JButton deleteItem;
     private javax.swing.JButton goBack;
@@ -371,5 +394,7 @@ public class ItemsInCart extends javax.swing.JFrame {
     private javax.swing.JButton nextRecord;
     private javax.swing.JButton previousRecord;
     private javax.swing.JButton proceed;
+=======
+>>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
     // End of variables declaration//GEN-END:variables
 }

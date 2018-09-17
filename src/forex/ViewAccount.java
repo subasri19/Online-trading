@@ -279,7 +279,11 @@ public class ViewAccount extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
+<<<<<<< HEAD
         update.setVisible(false);
+=======
+        this.setVisible(false);
+>>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
     }//GEN-LAST:event_updateActionPerformed
 
     private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed
