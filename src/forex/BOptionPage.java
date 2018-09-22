@@ -79,7 +79,7 @@ public class BOptionPage extends javax.swing.JFrame {
         getContentPane().add(yourCart);
         yourCart.setBounds(420, 271, 327, 43);
 
-        bg.setBackground(new java.awt.Color(255, 153, 255));
+        bg.setBackground(new java.awt.Color(255, 255, 204));
         bg.setOpaque(true);
         getContentPane().add(bg);
         bg.setBounds(-5, 3, 1090, 700);

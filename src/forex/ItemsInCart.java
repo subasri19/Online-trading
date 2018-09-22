@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package forex;
 
-<<<<<<< HEAD
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-=======
->>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
 /**
  *
  * @author Subasri
@@ -28,14 +21,22 @@ public class ItemsInCart extends javax.swing.JFrame {
     }
 
     public String uname;
-    
+    ResultSet RS;
     ItemsInCart(String UName) {
        initComponents();
-<<<<<<< HEAD
-       display();
-=======
->>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
        this.uname = UName;
+       display();
+       try{
+            Class.forName("java.sql.DriverManager");
+            Connection con = (Connection)
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
+            Statement stmt = (Statement) con.createStatement();
+            String query = "select * from itemsInCart where uname='"+uname+"';";
+            RS = stmt.executeQuery(query);
+      }
+       catch(Exception e){
+           JOptionPane.showMessageDialog(this,e.getMessage());
+       }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -48,7 +49,6 @@ public class ItemsInCart extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
         ltitle = new javax.swing.JLabel();
         litemcategory = new javax.swing.JLabel();
         litemCost = new javax.swing.JLabel();
@@ -64,25 +64,39 @@ public class ItemsInCart extends javax.swing.JFrame {
         proceed = new javax.swing.JButton();
         goBack = new javax.swing.JButton();
         nextRecord = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         ltitle.setFont(new java.awt.Font("Comic Sans MS", 2, 36)); // NOI18N
         ltitle.setText("YOUR CART");
+        getContentPane().add(ltitle);
+        ltitle.setBounds(440, 47, 208, 51);
 
         litemcategory.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
         litemcategory.setText("Category");
+        getContentPane().add(litemcategory);
+        litemcategory.setBounds(149, 384, 101, 34);
 
         litemCost.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
         litemCost.setText("Cost");
+        getContentPane().add(litemCost);
+        litemCost.setBounds(149, 464, 50, 34);
 
         litemName.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
         litemName.setText("Item name");
+        getContentPane().add(litemName);
+        litemName.setBounds(149, 160, 120, 34);
 
         litemDesc.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
         litemDesc.setText("Item description");
+        getContentPane().add(litemDesc);
+        litemDesc.setBounds(149, 258, 190, 34);
 
         itemCategory.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        getContentPane().add(itemCategory);
+        itemCategory.setBounds(441, 378, 289, 46);
 
         itemCost.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
         itemCost.addActionListener(new java.awt.event.ActionListener() {
@@ -90,12 +104,24 @@ public class ItemsInCart extends javax.swing.JFrame {
                 itemCostActionPerformed(evt);
             }
         });
+        getContentPane().add(itemCost);
+        itemCost.setBounds(441, 452, 289, 46);
 
         itemName.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
+        itemName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemNameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(itemName);
+        itemName.setBounds(441, 168, 289, 46);
 
         aitemDesc.setColumns(20);
         aitemDesc.setRows(5);
         itemDesc.setViewportView(aitemDesc);
+
+        getContentPane().add(itemDesc);
+        itemDesc.setBounds(441, 243, 461, 117);
 
         previousRecord.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         previousRecord.setText("MOVE TO PREVIOUS RECORD");
@@ -104,6 +130,8 @@ public class ItemsInCart extends javax.swing.JFrame {
                 previousRecordActionPerformed(evt);
             }
         });
+        getContentPane().add(previousRecord);
+        previousRecord.setBounds(547, 542, 391, 43);
 
         deleteItem.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         deleteItem.setText("DELETE ITEM FROM CART");
@@ -112,6 +140,8 @@ public class ItemsInCart extends javax.swing.JFrame {
                 deleteItemActionPerformed(evt);
             }
         });
+        getContentPane().add(deleteItem);
+        deleteItem.setBounds(355, 603, 355, 43);
 
         proceed.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         proceed.setText("PROCEED TO PAYMENT");
@@ -120,6 +150,8 @@ public class ItemsInCart extends javax.swing.JFrame {
                 proceedActionPerformed(evt);
             }
         });
+        getContentPane().add(proceed);
+        proceed.setBounds(355, 665, 355, 43);
 
         goBack.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         goBack.setText("GO BACK");
@@ -128,6 +160,8 @@ public class ItemsInCart extends javax.swing.JFrame {
                 goBackActionPerformed(evt);
             }
         });
+        getContentPane().add(goBack);
+        goBack.setBounds(29, 665, 141, 43);
 
         nextRecord.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         nextRecord.setText("MOVE TO NEXT RECORD");
@@ -136,105 +170,17 @@ public class ItemsInCart extends javax.swing.JFrame {
                 nextRecordActionPerformed(evt);
             }
         });
+        getContentPane().add(nextRecord);
+        nextRecord.setBounds(184, 542, 335, 43);
 
-=======
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
->>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(litemDesc)
-                    .addComponent(litemName)
-                    .addComponent(litemcategory)
-                    .addComponent(litemCost))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(ltitle)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(itemCost, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(itemDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(itemCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(nextRecord)
-                        .addGap(28, 28, 28)
-                        .addComponent(previousRecord)
-                        .addGap(89, 89, 89))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(proceed, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deleteItem))
-                        .addGap(317, 317, 317))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(goBack)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(ltitle)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(litemName))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(itemName, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(litemDesc))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(itemDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(itemCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(litemcategory))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(litemCost)
-                    .addComponent(itemCost, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(previousRecord)
-                    .addComponent(nextRecord))
-                .addGap(18, 18, 18)
-                .addComponent(deleteItem)
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goBack)
-                    .addComponent(proceed))
-                .addContainerGap(51, Short.MAX_VALUE))
-=======
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
->>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
-        );
+        jLabel1.setBackground(new java.awt.Color(255, 255, 204));
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1000, 760);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
  public void display(){
         try{
             ResultSet rs;
@@ -242,17 +188,17 @@ public class ItemsInCart extends javax.swing.JFrame {
             Connection con = (Connection)
             DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
             Statement stmt = (Statement) con.createStatement();
-            String query = "select * from itemDetails;";
+            String query = "select * from itemsInCart where uname='"+uname+"';";
             rs = stmt.executeQuery(query);
             
-            if(rs.next()){
-                 rs.first();
+            if(rs.first()){
+                rs.first();
                 itemName.setText(rs.getString("name"));
                 aitemDesc.setText(rs.getString("descr"));
                 itemCategory.setText(rs.getString("category"));
                 itemCost.setText(rs.getString("cost"));
             } else {
-                JOptionPane.showMessageDialog(null,"You have nothing in your cart");
+                JOptionPane.showMessageDialog(null,"Your cart is empty. Please add items to the cart to view them here");
             }         
             
         }
@@ -276,23 +222,14 @@ public class ItemsInCart extends javax.swing.JFrame {
     }//GEN-LAST:event_goBackActionPerformed
 
     private void nextRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRecordActionPerformed
-        try{
-            ResultSet rs;
-            Class.forName("java.sql.DriverManager");
-            Connection con = (Connection)
-            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
-            Statement stmt = (Statement) con.createStatement();
-            String query = "select * from itemDetails;";
-            rs = stmt.executeQuery(query);
-            
-            while(!rs.isLast()){
-                rs.next();
-                itemName.setText(rs.getString("name"));
-                aitemDesc.setText(rs.getString("descr"));
-                itemCategory.setText(rs.getString("category"));
-                itemCost.setText(rs.getString("cost"));
-            }
-            
+        try{  
+           if(!RS.isLast()){
+                RS.next();
+                itemName.setText(RS.getString("name"));
+                aitemDesc.setText(RS.getString("descr"));
+                itemCategory.setText(RS.getString("category"));
+                itemCost.setText(RS.getString("cost"));     
+            } 
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this,e.getMessage());
@@ -302,22 +239,13 @@ public class ItemsInCart extends javax.swing.JFrame {
 
     private void previousRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousRecordActionPerformed
          try{
-            ResultSet rs;
-            Class.forName("java.sql.DriverManager");
-            Connection con = (Connection)
-            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
-            Statement stmt = (Statement) con.createStatement();
-            String query = "select * from itemDetails;";
-            rs = stmt.executeQuery(query);
-            
-            while(!rs.isFirst() && !rs.isLast()){
-                rs.previous();
-                itemName.setText(rs.getString("name"));
-                aitemDesc.setText(rs.getString("descr"));
-                itemCategory.setText(rs.getString("category"));
-                itemCost.setText(rs.getString("cost"));
-            }
-            
+            if(!RS.isFirst()){
+                RS.previous();
+                itemName.setText(RS.getString("name"));
+                aitemDesc.setText(RS.getString("descr"));
+                itemCategory.setText(RS.getString("category"));
+                itemCost.setText(RS.getString("cost"));
+            }      
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this,e.getMessage());
@@ -325,13 +253,13 @@ public class ItemsInCart extends javax.swing.JFrame {
     }//GEN-LAST:event_previousRecordActionPerformed
 
     private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteItemActionPerformed
-       try{
+        try{
             ResultSet rs;
             Class.forName("java.sql.DriverManager");
             Connection con = (Connection)
             DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
             Statement stmt = (Statement) con.createStatement();
-            String query = "delete from itemDetails where uname = '" +uname+"' and name = '" +itemName.getText()+"';";
+            String query = "delete from itemsInCart where uname = '" +uname+"' and name = '" +itemName.getText()+"';";
             stmt.executeUpdate(query);
        }
        catch(Exception e){
@@ -340,8 +268,10 @@ public class ItemsInCart extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null, "Item deleted from your cart");
     }//GEN-LAST:event_deleteItemActionPerformed
 
-=======
->>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
+    private void itemNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemNameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -378,7 +308,6 @@ public class ItemsInCart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
     private javax.swing.JTextArea aitemDesc;
     private javax.swing.JButton deleteItem;
     private javax.swing.JButton goBack;
@@ -386,6 +315,7 @@ public class ItemsInCart extends javax.swing.JFrame {
     private javax.swing.JTextField itemCost;
     private javax.swing.JScrollPane itemDesc;
     private javax.swing.JTextField itemName;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel litemCost;
     private javax.swing.JLabel litemDesc;
     private javax.swing.JLabel litemName;
@@ -394,7 +324,5 @@ public class ItemsInCart extends javax.swing.JFrame {
     private javax.swing.JButton nextRecord;
     private javax.swing.JButton previousRecord;
     private javax.swing.JButton proceed;
-=======
->>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
     // End of variables declaration//GEN-END:variables
 }

@@ -187,7 +187,7 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(pw1);
         pw1.setBounds(490, 430, 270, 39);
 
-        jLabel11.setBackground(new java.awt.Color(255, 153, 255));
+        jLabel11.setBackground(new java.awt.Color(255, 255, 204));
         jLabel11.setOpaque(true);
         getContentPane().add(jLabel11);
         jLabel11.setBounds(0, 0, 1150, 650);
@@ -265,11 +265,7 @@ public class Signup extends javax.swing.JFrame {
                 }
                 if(seller.isSelected()){
                     role = 's';
-<<<<<<< HEAD
                     new sellerOption(UName).setVisible(true);
-=======
-                    new BOptionPage(UName).setVisible(true);
->>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
                     this.setVisible(false);
                 }
             

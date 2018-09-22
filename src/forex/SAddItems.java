@@ -135,7 +135,7 @@ public class SAddItems extends javax.swing.JFrame {
         Blogout.setBounds(610, 540, 210, 65);
 
         categoryList.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        categoryList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--ANY--", "Electronics", "Accessories", "Books", "MIsccellaneous" }));
+        categoryList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--ANY--", "Electronics", "Accessories", "Books", "Automobiles", "MIsccellaneous" }));
         categoryList.setOpaque(false);
         categoryList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +145,7 @@ public class SAddItems extends javax.swing.JFrame {
         getContentPane().add(categoryList);
         categoryList.setBounds(470, 320, 170, 50);
 
-        jLabel1.setBackground(new java.awt.Color(255, 153, 255));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(1, 0, 1020, 640);
@@ -160,7 +160,7 @@ public class SAddItems extends javax.swing.JFrame {
            String name = itemName.getText();
            String desc = itemDesc.getText();
            String cost = itemCost.getText();
-           String category = categoryList.getName();
+           String category = categoryList.getSelectedItem().toString();
            
            try{
                     Class.forName("java.sql.DriverManager");
@@ -175,6 +175,9 @@ public class SAddItems extends javax.swing.JFrame {
                 }
            JOptionPane.showMessageDialog(null, "Item details have been successfully entered");
        }
+       itemName.setText("");
+       itemCost.setText("");
+       itemDesc.setText("");    
     }//GEN-LAST:event_BaddItemsActionPerformed
 
     private void itemCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCostActionPerformed

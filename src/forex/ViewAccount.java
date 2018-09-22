@@ -171,7 +171,7 @@ public class ViewAccount extends javax.swing.JFrame {
         getContentPane().add(update);
         update.setBounds(870, 320, 251, 60);
 
-        BG.setBackground(new java.awt.Color(255, 153, 255));
+        BG.setBackground(new java.awt.Color(255, 255, 204));
         BG.setOpaque(true);
         getContentPane().add(BG);
         BG.setBounds(-9, 0, 1190, 630);
@@ -279,11 +279,9 @@ public class ViewAccount extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
-<<<<<<< HEAD
+
         update.setVisible(false);
-=======
-        this.setVisible(false);
->>>>>>> 6ca944107eaab0245c654d78694373cbb4812696
+        
     }//GEN-LAST:event_updateActionPerformed
 
     private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed

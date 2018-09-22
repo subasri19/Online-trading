@@ -51,7 +51,7 @@ public class Logout extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(420, 450, 130, 60);
 
-        jLabel4.setBackground(new java.awt.Color(255, 153, 255));
+        jLabel4.setBackground(new java.awt.Color(255, 255, 204));
         jLabel4.setOpaque(true);
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 1050, 660);

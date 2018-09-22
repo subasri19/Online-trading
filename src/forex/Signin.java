@@ -102,7 +102,7 @@ public class Signin extends javax.swing.JFrame {
         getContentPane().add(pw);
         pw.setBounds(580, 260, 230, 40);
 
-        jLabel7.setBackground(new java.awt.Color(255, 153, 255));
+        jLabel7.setBackground(new java.awt.Color(255, 255, 204));
         jLabel7.setOpaque(true);
         getContentPane().add(jLabel7);
         jLabel7.setBounds(1, 0, 1120, 630);
