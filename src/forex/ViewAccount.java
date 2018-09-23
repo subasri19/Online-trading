@@ -56,6 +56,7 @@ public class ViewAccount extends javax.swing.JFrame {
         BG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1150, 1150));
         getContentPane().setLayout(null);
 
         LTitle.setFont(new java.awt.Font("Segoe Script", 3, 36)); // NOI18N
@@ -174,7 +175,7 @@ public class ViewAccount extends javax.swing.JFrame {
         BG.setBackground(new java.awt.Color(255, 255, 204));
         BG.setOpaque(true);
         getContentPane().add(BG);
-        BG.setBounds(-9, 0, 1190, 630);
+        BG.setBounds(-9, 0, 1200, 1120);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

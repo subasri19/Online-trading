@@ -50,6 +50,8 @@ public class Signup extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1120, 1120));
+        setSize(new java.awt.Dimension(1120, 1120));
         getContentPane().setLayout(null);
 
         title.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
@@ -80,7 +82,7 @@ public class Signup extends javax.swing.JFrame {
         lmail.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
         lmail.setText("Username");
         getContentPane().add(lmail);
-        lmail.setBounds(220, 200, 229, 34);
+        lmail.setBounds(220, 200, 1120, 34);
 
         lpw.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
         lpw.setText("Password");
@@ -190,7 +192,7 @@ public class Signup extends javax.swing.JFrame {
         jLabel11.setBackground(new java.awt.Color(255, 255, 204));
         jLabel11.setOpaque(true);
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(0, 0, 1150, 650);
+        jLabel11.setBounds(0, 0, 1150, 1120);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

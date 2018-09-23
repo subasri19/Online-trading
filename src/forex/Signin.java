@@ -105,7 +105,7 @@ public class Signin extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(255, 255, 204));
         jLabel7.setOpaque(true);
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(1, 0, 1120, 630);
+        jLabel7.setBounds(-9, 0, 1130, 1120);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

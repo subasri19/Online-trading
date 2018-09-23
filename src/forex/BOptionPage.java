@@ -37,6 +37,7 @@ public class BOptionPage extends javax.swing.JFrame {
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1120, 1120));
         getContentPane().setLayout(null);
 
         viewAcc.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -82,7 +83,7 @@ public class BOptionPage extends javax.swing.JFrame {
         bg.setBackground(new java.awt.Color(255, 255, 204));
         bg.setOpaque(true);
         getContentPane().add(bg);
-        bg.setBounds(-5, 3, 1090, 700);
+        bg.setBounds(-5, 3, 1120, 1120);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

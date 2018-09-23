@@ -29,6 +29,7 @@ public class Logout extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1120, 1120));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 3, 24)); // NOI18N
@@ -54,7 +55,7 @@ public class Logout extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(255, 255, 204));
         jLabel4.setOpaque(true);
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 1050, 660);
+        jLabel4.setBounds(0, 0, 1120, 1120);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

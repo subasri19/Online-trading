@@ -71,6 +71,7 @@ public class BItemDisplayPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1120, 1120));
         getContentPane().setLayout(null);
 
         addToCart.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
@@ -181,7 +182,7 @@ public class BItemDisplayPage extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -2, 1100, 790);
+        jLabel1.setBounds(0, -2, 1120, 1150);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

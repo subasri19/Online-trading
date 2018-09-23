@@ -36,6 +36,7 @@ public class sellerOption extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1120, 1120));
         getContentPane().setLayout(null);
 
         addItems.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
@@ -68,10 +69,10 @@ public class sellerOption extends javax.swing.JFrame {
         getContentPane().add(logout);
         logout.setBounds(360, 370, 260, 56);
 
-        jLabel1.setBackground(new java.awt.Color(255, 153, 255));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(1, 2, 1010, 610);
+        jLabel1.setBounds(1, 2, 1120, 1120);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

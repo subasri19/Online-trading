@@ -67,6 +67,7 @@ public class ItemsInCart extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1120, 1120));
         getContentPane().setLayout(null);
 
         ltitle.setFont(new java.awt.Font("Comic Sans MS", 2, 36)); // NOI18N
@@ -176,7 +177,7 @@ public class ItemsInCart extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1000, 760);
+        jLabel1.setBounds(0, 0, 1150, 1150);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,8 +213,26 @@ public class ItemsInCart extends javax.swing.JFrame {
     }//GEN-LAST:event_itemCostActionPerformed
 
     private void proceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proceedActionPerformed
-        this.dispose();
-        new Payment(uname).setVisible(true);
+        int amt = 0;
+        try{
+            ResultSet rs;
+            Class.forName("java.sql.DriverManager");
+            Connection con = (Connection)
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/forex","root", "");
+            Statement stmt = (Statement) con.createStatement();
+            String query = "select cost from itemsInCart where uname='"+uname+"';";
+            rs = stmt.executeQuery(query);
+            while(rs.next()){ 
+                int cost = Integer.parseInt(rs.getString("cost"));
+                amt = amt+cost;
+                rs.next();
+            }
+            this.dispose();
+            new Payment(uname,amt).setVisible(true);
+        }
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_proceedActionPerformed
 
     private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed

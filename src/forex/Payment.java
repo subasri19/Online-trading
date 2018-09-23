@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package forex;
 
 import com.mysql.jdbc.Connection;
@@ -25,10 +21,15 @@ public class Payment extends javax.swing.JFrame {
     }
 
     public String uname;
+    public int cost;
     
-    Payment(String UName) {
+    Payment(String UName , int amt) {
         this.uname = UName;
+        this.cost = amt;
         initComponents();
+        TamtPaid.setText(Integer.toString(this.cost));
+        //TamtPaid.setText(this.cost);
+        TamtPaid.setEditable(false);
     }
 
     /**
@@ -53,6 +54,7 @@ public class Payment extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1120, 1120));
         getContentPane().setLayout(null);
 
         totalAmt.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
@@ -129,7 +131,7 @@ public class Payment extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-2, 2, 1060, 670);
+        jLabel1.setBounds(-2, 2, 1150, 1150);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
