@@ -190,7 +190,7 @@ public class SAddItems extends javax.swing.JFrame {
     }//GEN-LAST:event_itemNameActionPerformed
 
     private void BlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlogoutActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new Logout().setVisible(true);
     }//GEN-LAST:event_BlogoutActionPerformed
 
@@ -199,7 +199,7 @@ public class SAddItems extends javax.swing.JFrame {
     }//GEN-LAST:event_categoryListActionPerformed
 
     private void BviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BviewActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new ViewAccount(uname).setVisible(true);
     }//GEN-LAST:event_BviewActionPerformed
 

@@ -89,22 +89,22 @@ public class BOptionPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAccActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new ViewAccount(uname).setVisible(true);
     }//GEN-LAST:event_viewAccActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-       this.dispose();
+       this.setVisible(false);
        new Logout().setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
 
     private void viewItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewItemsActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new BItemDisplayPage(uname).setVisible(true);
     }//GEN-LAST:event_viewItemsActionPerformed
 
     private void yourCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yourCartActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new ItemsInCart(uname).setVisible(true);
     }//GEN-LAST:event_yourCartActionPerformed
 

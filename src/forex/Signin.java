@@ -127,7 +127,6 @@ public class Signin extends javax.swing.JFrame {
             String query = "select * from accountDetails where userName='"+UName+"' and pw='"+PW+"';";
             rs = stmt.executeQuery(query);
             if(rs.next()){
-                
                     JOptionPane.showMessageDialog(null,"Succeffully logged in","Login Success",1);
                     if(rs.getString("role").equals("s"))
                         new sellerOption(UName).setVisible(true);
@@ -137,7 +136,6 @@ public class Signin extends javax.swing.JFrame {
                 }
             else
                 JOptionPane.showMessageDialog(null, "Please enter a valid username and password", "Error message",1);
-               
             }
             
          

@@ -188,7 +188,7 @@ public class BItemDisplayPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new Logout().setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
 
@@ -211,12 +211,12 @@ public class BItemDisplayPage extends javax.swing.JFrame {
     }//GEN-LAST:event_previousRecordActionPerformed
 
     private void viewAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAccActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new ViewAccount(uname).setVisible(true);
     }//GEN-LAST:event_viewAccActionPerformed
 
     private void seeYourCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeYourCartActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new ItemsInCart(uname).setVisible(true);
     }//GEN-LAST:event_seeYourCartActionPerformed
 

@@ -84,12 +84,12 @@ public class sellerOption extends javax.swing.JFrame {
 
     private void addItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemsActionPerformed
         new SAddItems(uname).setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_addItemsActionPerformed
 
     private void viewAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAccActionPerformed
         new ViewAccount(uname).setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_viewAccActionPerformed
 
     /**

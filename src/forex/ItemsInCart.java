@@ -64,6 +64,7 @@ public class ItemsInCart extends javax.swing.JFrame {
         proceed = new javax.swing.JButton();
         goBack = new javax.swing.JButton();
         nextRecord = new javax.swing.JButton();
+        viewAcc = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,6 +119,7 @@ public class ItemsInCart extends javax.swing.JFrame {
         itemName.setBounds(441, 168, 289, 46);
 
         aitemDesc.setColumns(20);
+        aitemDesc.setFont(new java.awt.Font("Comic Sans MS", 2, 24)); // NOI18N
         aitemDesc.setRows(5);
         itemDesc.setViewportView(aitemDesc);
 
@@ -142,7 +144,7 @@ public class ItemsInCart extends javax.swing.JFrame {
             }
         });
         getContentPane().add(deleteItem);
-        deleteItem.setBounds(355, 603, 355, 43);
+        deleteItem.setBounds(300, 600, 355, 43);
 
         proceed.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         proceed.setText("PROCEED TO PAYMENT");
@@ -152,7 +154,7 @@ public class ItemsInCart extends javax.swing.JFrame {
             }
         });
         getContentPane().add(proceed);
-        proceed.setBounds(355, 665, 355, 43);
+        proceed.setBounds(300, 660, 355, 43);
 
         goBack.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         goBack.setText("GO BACK");
@@ -162,7 +164,7 @@ public class ItemsInCart extends javax.swing.JFrame {
             }
         });
         getContentPane().add(goBack);
-        goBack.setBounds(29, 665, 141, 43);
+        goBack.setBounds(80, 660, 141, 43);
 
         nextRecord.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
         nextRecord.setText("MOVE TO NEXT RECORD");
@@ -173,6 +175,16 @@ public class ItemsInCart extends javax.swing.JFrame {
         });
         getContentPane().add(nextRecord);
         nextRecord.setBounds(184, 542, 335, 43);
+
+        viewAcc.setFont(new java.awt.Font("Comic Sans MS", 3, 24)); // NOI18N
+        viewAcc.setText("VIEW ACCOUNT");
+        viewAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAccActionPerformed(evt);
+            }
+        });
+        getContentPane().add(viewAcc);
+        viewAcc.setBounds(720, 650, 240, 50);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 204));
         jLabel1.setOpaque(true);
@@ -226,8 +238,15 @@ public class ItemsInCart extends javax.swing.JFrame {
                 int cost = Integer.parseInt(rs.getString("cost"));
                 amt = amt+cost;
                 rs.next();
+                if(rs.isLast()){
+                    amt = amt + Integer.parseInt(rs.getString("cost"));
+                }
+                    //amt = amt + Integer.parseInt(rs.getString("cost"));
             }
-            this.dispose();
+            //rs.isLast();
+            //amt = amt + Integer.parseInt(rs.getString("cost"));
+            
+            this.setVisible(false);
             new Payment(uname,amt).setVisible(true);
         }
         catch(Exception e){
@@ -236,7 +255,7 @@ public class ItemsInCart extends javax.swing.JFrame {
     }//GEN-LAST:event_proceedActionPerformed
 
     private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed
-        this.dispose();
+        this.setVisible(false);
         new BItemDisplayPage(uname).setVisible(true);
     }//GEN-LAST:event_goBackActionPerformed
 
@@ -291,6 +310,11 @@ public class ItemsInCart extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_itemNameActionPerformed
 
+    private void viewAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAccActionPerformed
+        this.setVisible(false);
+        new ViewAccount(uname).setVisible(true);
+    }//GEN-LAST:event_viewAccActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -343,5 +367,6 @@ public class ItemsInCart extends javax.swing.JFrame {
     private javax.swing.JButton nextRecord;
     private javax.swing.JButton previousRecord;
     private javax.swing.JButton proceed;
+    private javax.swing.JButton viewAcc;
     // End of variables declaration//GEN-END:variables
 }

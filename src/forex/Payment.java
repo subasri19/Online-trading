@@ -142,7 +142,7 @@ public class Payment extends javax.swing.JFrame {
 
     private void payAmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payAmtActionPerformed
         JOptionPane.showMessageDialog(null,"The product will be delivered to you shortly! Thank you for using our service");
-        this.dispose();
+        this.setVisible(false);
         new BItemDisplayPage(uname).setVisible(true);
         try{
             ResultSet rs;
@@ -156,7 +156,7 @@ public class Payment extends javax.swing.JFrame {
        catch(Exception e){
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
-       JOptionPane.showMessageDialog(null, "Item deleted from your cart");
+       
     }//GEN-LAST:event_payAmtActionPerformed
 
     private void TamtPaidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TamtPaidActionPerformed

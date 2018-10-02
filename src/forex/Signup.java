@@ -262,15 +262,14 @@ public class Signup extends javax.swing.JFrame {
                         
                 if(buyer.isSelected()){
                     role = 'b';
-                    new BOptionPage(UName).setVisible(true);
-                    this.setVisible(false);
+                    
                 }
                 if(seller.isSelected()){
                     role = 's';
-                    new sellerOption(UName).setVisible(true);
-                    this.setVisible(false);
+                    
                 }
-            
+                this.setVisible(false);
+                new Signin().setVisible(true);
                 try{
                     Class.forName("java.sql.DriverManager");
                     Connection con = (Connection)

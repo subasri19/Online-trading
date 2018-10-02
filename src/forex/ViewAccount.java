@@ -216,7 +216,7 @@ public class ViewAccount extends javax.swing.JFrame {
     }
     
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        this.dispose();
+        this.setVisible(false);
         update.setVisible(false);
         new Logout().setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
@@ -242,7 +242,7 @@ public class ViewAccount extends javax.swing.JFrame {
         Dphno.setEditable(false);
         Dmailid.setEditable(false);
         update.setVisible(false);
-        this.dispose();
+        this.setVisible(false);
         new Signin().setVisible(true);
         try{
             ResultSet rs;   
@@ -287,12 +287,12 @@ public class ViewAccount extends javax.swing.JFrame {
 
     private void goBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackActionPerformed
        if(Drole.getText().equalsIgnoreCase("buyer")){
-           this.dispose();
-           new BOptionPage().setVisible(true);
+           this.setVisible(false);
+           new BOptionPage(UName).setVisible(true);
        }
        else{
-           this.dispose();
-           new sellerOption().setVisible(true);
+           this.setVisible(false);
+           new sellerOption(UName).setVisible(true);
        }
     }//GEN-LAST:event_goBackActionPerformed
 
